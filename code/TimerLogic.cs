@@ -1,58 +1,50 @@
 ﻿
 namespace Sandbox
 {
-	public class TimerLogic : Component
+	public class TimerLogic : Component, Component.INetworkListener
 	{
-		[Sync] public TimeUntil MyTimeUntil { get; set; }
-		[Sync] public RealTimeUntil MyRealTimeUntil { get; set; }
+		[HostSync] public TimeSince SimeSinceTick { get; set; }
 
-		[HostSync] public TimeUntil HostTimeUntil { get; set; }
-		[HostSync] public RealTimeUntil HostRealTimeUntil { get; set; }
-		public TimeSince SimeSinceTick { get; set; }
-
-
-		public DynamicChildComponent DynamicChildComponent
+		public DynamicBaseComponent DynamicBaseComponent
 		{
 			get
 			{
-				return Game.ActiveScene.Components.GetAll<DynamicChildComponent>().FirstOrDefault();
+				return Game.ActiveScene.Components.GetAll<DynamicBaseComponent>().FirstOrDefault();
 			}
 		}
-
 
 		protected override void OnStart()
 		{
 			Log.Info( "TimerLogic OnStart - IsProxy " + IsProxy + " IsHost " + Networking.IsHost );
 			if ( !Networking.IsHost ) { return; }
-			if ( IsProxy ) { return; }
 
-			MyTimeUntil = 60f;
-			MyRealTimeUntil = 60f;
-			HostTimeUntil = 60f;
-			HostRealTimeUntil = 60f;
+			Transform.Position = Vector3.Random * 100f;
 
-			DynamicChildComponent?.Destroy();
-			GameObject.Components.Create<DynamicChildComponent>();
-			GameObject.Network.Refresh();
+			DynamicBaseComponent?.Destroy();
+			Components.Create<DynamicChildComponent>();
+
 		}
 
 		protected override void OnFixedUpdate()
 		{
-			base.OnFixedUpdate();
+			if ( !Networking.IsHost ) { return; }
 
-			if ( SimeSinceTick < 1f ) { return; }
+			if ( SimeSinceTick < 30f ) { return; }
 			SimeSinceTick = 0f;
 
-			Log.Info( "--------" );
-			Log.Info( "MyTimeUntil " + MyTimeUntil );
-			Log.Info( "MyRealTimeUntil " + MyRealTimeUntil );
-			Log.Info( "HostTimeUntil " + HostTimeUntil );
-			Log.Info( "HostRealTimeUntil " + HostRealTimeUntil );
+			Log.Info( "SimeSinceTick " + SimeSinceTick + " " + Networking.IsHost );
+			Log.Info( "Recreating child. Next in 30s" );
 
-			DynamicChildComponent?.Destroy();
+			DynamicBaseComponent?.Destroy();
 			GameObject.Components.Create<DynamicChildComponent>();
 			GameObject.Network.Refresh();
 		}
 
+		public void OnBecameHost( Connection client )
+		{
+			Log.Info( "TimerLogic OnBecameHost " + client + " " + this + " Networking.IsHost " + Networking.IsHost );
+			Log.Info( "TimerLogic SimeSinceTick " + SimeSinceTick );
+
+		}
 	}
 }

@@ -1,32 +1,19 @@
-﻿namespace Sandbox
+﻿
+namespace Sandbox
 {
-	public class DynamicChildComponent : Component
+	public class DynamicChildComponent : DynamicBaseComponent
 	{
-
-		[Sync] public TimeUntil MyDynamicTimeUntil { get; set; }
-		public TimeSince SimeSinceTick { get; set; }
-
 		protected override void OnStart()
 		{
+			base.OnStart();
 			Log.Info( "DynamicChildComponent OnStart - IsProxy " + IsProxy + " IsHost " + Networking.IsHost );
-			if ( !Networking.IsHost ) { return; }
-			if ( IsProxy ) { return; }
-
-			MyDynamicTimeUntil = 120f;
-
 		}
 
-		protected override void OnFixedUpdate()
+		public override void CallMe()
 		{
-			base.OnFixedUpdate();
+			base.CallMe();
 
-			if ( SimeSinceTick < 1f ) { return; }
-			SimeSinceTick = 0f;
-
-			Log.Info( "--------" );
-			Log.Info( "MyDynamicTimeUntil " + MyDynamicTimeUntil );
+			Log.Info( "CallMe Child - Networking.IsHost " + Networking.IsHost );
 		}
-
-
 	}
 }

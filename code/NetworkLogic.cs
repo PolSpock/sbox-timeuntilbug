@@ -5,7 +5,7 @@ public class NetworkLogic : Component
 
 	protected override void OnAwake()
 	{
-		Log.Info( "NetworkLogic OnAwake - GameNetworkSystem.IsActive " + GameNetworkSystem.IsActive );
+		//Log.Info( "NetworkLogic OnAwake - GameNetworkSystem.IsActive " + GameNetworkSystem.IsActive );
 
 		if ( !GameNetworkSystem.IsActive )
 		{
@@ -15,12 +15,12 @@ public class NetworkLogic : Component
 
 	 protected override async void OnStart()
 	{
-		Log.Info( "NetworkLogic OnStart - IsProxy " + IsProxy + " IsHost " + Networking.IsHost );
+		//Log.Info( "NetworkLogic OnStart - IsProxy " + IsProxy + " IsHost " + Networking.IsHost );
 
 		if ( !Networking.IsHost ) { return; }
-		if ( IsProxy ) { return; }
 
 		var go = new GameObject();
+		go.Network.SetOrphanedMode(NetworkOrphaned.Host);
 		go.Components.Create<TimerLogic>();
 		go.NetworkSpawn();
 
