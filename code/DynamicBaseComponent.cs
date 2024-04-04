@@ -1,9 +1,16 @@
-﻿namespace Sandbox
+﻿
+namespace TimeUntilBug.BaseComponent
 {
-	public class DynamicBaseComponent : Component, Component.INetworkListener
+	public enum RoundState
 	{
-		public TimeSince SimeSinceTick { get; set; }
+		Started,
+		InProgress,
+		Paused,
+		Ended
+	}
 
+	public abstract class DynamicBaseComponent : Component, Component.INetworkListener
+	{
 		protected override void OnStart()
 		{
 			Log.Info( "DynamicBaseComponent OnStart - IsProxy " + IsProxy + " IsHost " + Networking.IsHost );
@@ -14,17 +21,10 @@
 			Network.Refresh();
 		}
 
-		protected override void OnFixedUpdate()
-		{
-			base.OnFixedUpdate();
-
-			if ( SimeSinceTick < 1f ) { return; }
-			SimeSinceTick = 0f;
-		}
-
 		public virtual void OnBecameHost( Connection client )
 		{
 			Log.Info( "DynamicBaseComponent OnBecameHost " + client + " " + this + " Networking.IsHost " + Networking.IsHost );
+			Log.Info( "GetType()" + GetType() );
 			Log.Info( "GetType().Name " + GetType().Name );
 			Log.Info( this );
 			Log.Info( "-----" );
@@ -32,15 +32,9 @@
 			Log.Info( "GameObject.Network.OwnerId " + GameObject.Network.OwnerId );
 			Log.Info( "-----" );
 			Log.Info( "Is DynamicBaseComponent " + (this is DynamicBaseComponent) );
-			Log.Info( "Is DynamicChildComponent " + (this is DynamicChildComponent) );
-
-			CallMe();
-
+			Log.Info( "Is One.DynamicChildComponent " + (this is TimeUntilBug.One.OneChildComponent.DynamicChildComponent) );
+			Log.Info( "Is Two.DynamicChildComponent " + (this is TimeUntilBug.Two.OneChildComponent.DynamicChildComponent) );
 		}
 
-		public virtual void CallMe()
-		{
-			Log.Info( "CallMe Mother - Networking.IsHost " + Networking.IsHost );
-		}
 	}
 }
