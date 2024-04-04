@@ -24,7 +24,7 @@ namespace TimeUntilBug.BaseComponent
 		public virtual void OnBecameHost( Connection client )
 		{
 			Log.Info( "DynamicBaseComponent OnBecameHost " + client + " " + this + " Networking.IsHost " + Networking.IsHost );
-			Log.Info( "GetType()" + GetType() );
+			Log.Info( "GetType() " + GetType() );
 			Log.Info( "GetType().Name " + GetType().Name );
 			Log.Info( this );
 			Log.Info( "-----" );
