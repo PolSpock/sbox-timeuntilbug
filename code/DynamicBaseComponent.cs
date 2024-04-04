@@ -32,8 +32,8 @@ namespace TimeUntilBug.BaseComponent
 			Log.Info( "GameObject.Network.OwnerId " + GameObject.Network.OwnerId );
 			Log.Info( "-----" );
 			Log.Info( "Is DynamicBaseComponent " + (this is DynamicBaseComponent) );
-			Log.Info( "Is One.DynamicChildComponent " + (this is TimeUntilBug.One.OneChildComponent.DynamicChildComponent) );
-			Log.Info( "Is Two.DynamicChildComponent " + (this is TimeUntilBug.Two.OneChildComponent.DynamicChildComponent) );
+			Log.Info( "Is One.DynamicChildComponent " + (this is TimeUntilBug.One.ChildComponent.DynamicChildComponent) );
+			Log.Info( "Is Two.DynamicChildComponent " + (this is TimeUntilBug.Two.ChildComponent.DynamicChildComponent) );
 		}
 
 	}

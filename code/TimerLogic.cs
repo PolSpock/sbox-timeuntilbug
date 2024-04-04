@@ -1,6 +1,6 @@
 ﻿
 using TimeUntilBug.BaseComponent;
-using TimeUntilBug.Two.OneChildComponent;
+using TimeUntilBug.Two.ChildComponent;
 
 namespace TimeUntilBug.CoreLogic
 {

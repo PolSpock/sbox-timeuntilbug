@@ -1,7 +1,7 @@
 ﻿
 using TimeUntilBug.BaseComponent;
 
-namespace TimeUntilBug.Two.OneChildComponent
+namespace TimeUntilBug.Two.ChildComponent
 {
 	public class DynamicChildComponent : DynamicBaseComponent
 	{
