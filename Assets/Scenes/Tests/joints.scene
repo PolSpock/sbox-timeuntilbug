@@ -1,0 +1,895 @@
+{
+  "Id": "c97a6691-a5bc-453a-9b2c-0a62330ec613",
+  "GameObjects": [
+    {
+      "Id": "726c5e3b-7d44-4394-9b3a-cbb29401c7fc",
+      "Name": "Directional Light",
+      "Position": "158.6718,-124.3322,368.6452",
+      "Rotation": "0.8894004,0.1914825,-0.4057941,0.087365",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1,0.89069,0.76238,1",
+          "Shadows": true,
+          "SkyColor": "0.10599,0.11132,0.12376,1"
+        }
+      ]
+    },
+    {
+      "Id": "12df27a7-aaf4-4da8-bc02-173ecd53c168",
+      "Name": "SkyBox",
+      "Position": "1252.565,134.7641,-1378.779",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SkyBox2D",
+          "SkyMaterial": "materials/skybox/light_test_sky_night_basic.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "EnvmapProbe",
+          "Bounds": {
+            "Mins": "-4096,-4096,-4096",
+            "Maxs": "4096,4096,4096"
+          },
+          "Feathering": 0.02,
+          "Projection": "Sphere",
+          "Texture": "textures/cubemaps/default.vtex",
+          "TintColor": "0.12857,0.20583,0.42574,1"
+        }
+      ]
+    },
+    {
+      "Id": "0cd4b3b6-7ff0-461e-9ce3-716ce58ea5d4",
+      "Name": "Gradient Fog",
+      "Position": "1318.709,134.7641,-1636.627",
+      "Enabled": true
+    },
+    {
+      "Id": "3892656c-65a1-4fa2-9e9a-393d70b91af9",
+      "Name": "Surface",
+      "Position": "1420.439,0,-1637.736",
+      "Scale": "20,20,20",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/shine.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "0.05882,0.13725,0.49412,1"
+        },
+        {
+          "__type": "PlaneCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "eaa3c563-339f-4adf-861a-8251ff1d9e3e",
+      "Name": "industrial_light",
+      "Position": "1290.593,452.7491,-1483.374",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/sbox_props/industrial_light/industrial_light.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Rigidbody",
+          "AngularDamping": 2,
+          "Gravity": true,
+          "LinearDamping": 0.5,
+          "Locking": {},
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/sbox_props/industrial_light/industrial_light.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "SpringJoint",
+          "Body": {
+            "_type": "gameobject",
+            "go": "26e5c59d-5fa4-4812-8bac-74c64a2308ac"
+          },
+          "BreakForce": 0,
+          "BreakTorque": 0,
+          "Damping": 0.7,
+          "EnableCollision": false,
+          "Frequency": 5,
+          "MaxLength": 50,
+          "MinLength": 50,
+          "OnBreak": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "76c4ddbf-400e-4d8c-bde4-399685b5362e",
+          "Name": "Spot Light",
+          "Position": "0,0,-32",
+          "Rotation": "0,0.707107,0,0.7071065",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpotLight",
+              "Attenuation": 1,
+              "ConeInner": 15,
+              "ConeOuter": 45,
+              "Cookie": null,
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0,0.34,1",
+              "Radius": 500,
+              "Shadows": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "dc374a13-9fb5-4f4b-937f-1aa506b8a20c",
+      "Name": "Player",
+      "Position": "936.6692,538.1973,-1585.303",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "PlayerController",
+          "AnimationHelper": null,
+          "Body": null,
+          "Eye": {
+            "_type": "gameobject",
+            "go": "919b85bd-9fcf-45c7-9992-f0783512e19a"
+          },
+          "FirstPerson": true,
+          "Gravity": "0,0,800"
+        },
+        {
+          "__type": "CharacterController",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18
+        },
+        {
+          "__type": "PlayerGrabber",
+          "DecalEffect": {
+            "_type": "gameobject",
+            "prefab": "effects/decal_bullet_default.prefab"
+          },
+          "ImpactEffect": {
+            "_type": "gameobject",
+            "prefab": "effects/impact_default.prefab"
+          },
+          "ShootDamage": 9
+        }
+      ],
+      "Children": [
+        {
+          "Id": "919b85bd-9fcf-45c7-9992-f0783512e19a",
+          "Name": "Eye",
+          "Position": "0,0,58",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "Id": "c6e89877-6972-41f6-984b-ea6625523737",
+      "Name": "industrial_light (1)",
+      "Position": "1290.593,403.9128,-1483.374",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/sbox_props/industrial_light/industrial_light.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Rigidbody",
+          "AngularDamping": 2,
+          "Gravity": true,
+          "LinearDamping": 0.5,
+          "Locking": {},
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/sbox_props/industrial_light/industrial_light.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "SpringJoint",
+          "Body": {
+            "_type": "gameobject",
+            "go": "26e5c59d-5fa4-4812-8bac-74c64a2308ac"
+          },
+          "BreakForce": 0,
+          "BreakTorque": 0,
+          "Damping": 0.7,
+          "EnableCollision": false,
+          "Frequency": 5,
+          "MaxLength": 50,
+          "MinLength": 50,
+          "OnBreak": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "d3f710fe-1abe-4b8d-aa46-ce71e8a74ae0",
+          "Name": "Spot Light",
+          "Position": "0,0,-32",
+          "Rotation": "0,0.707107,0,0.7071065",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpotLight",
+              "Attenuation": 1,
+              "ConeInner": 15,
+              "ConeOuter": 45,
+              "Cookie": null,
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0,0.77267,1,1",
+              "Radius": 500,
+              "Shadows": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "d3ac4507-127c-41ed-872f-9a4fad9426f5",
+      "Name": "industrial_light (2)",
+      "Position": "1290.593,348.5238,-1483.374",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/sbox_props/industrial_light/industrial_light.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Rigidbody",
+          "AngularDamping": 2,
+          "Gravity": true,
+          "LinearDamping": 0.5,
+          "Locking": {},
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/sbox_props/industrial_light/industrial_light.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "SpringJoint",
+          "Body": {
+            "_type": "gameobject",
+            "go": "26e5c59d-5fa4-4812-8bac-74c64a2308ac"
+          },
+          "BreakForce": 0,
+          "BreakTorque": 0,
+          "Damping": 0.7,
+          "EnableCollision": false,
+          "Frequency": 5,
+          "MaxLength": 50,
+          "MinLength": 50,
+          "OnBreak": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "37e2fb26-5198-4761-a3c8-3c668cf45d56",
+          "Name": "Spot Light",
+          "Position": "0,0,-32",
+          "Rotation": "0,0.707107,0,0.7071065",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpotLight",
+              "Attenuation": 1,
+              "ConeInner": 15,
+              "ConeOuter": 45,
+              "Cookie": null,
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0.86,0,1",
+              "Radius": 500,
+              "Shadows": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "e7dd94b4-46aa-493f-aab7-1c9ef87bfc60",
+      "Name": "Rope",
+      "Position": "1290.593,452.749,-1483.374",
+      "Rotation": "-0.0000003038324,-0.0000002451021,-0.7282079,0.6853559",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LegacyParticleSystem",
+          "ControlPoints": [
+            {
+              "StringCP": "1",
+              "GameObjectValue": {
+                "_type": "gameobject",
+                "go": "eaa3c563-339f-4adf-861a-8251ff1d9e3e"
+              }
+            }
+          ],
+          "Looped": false,
+          "Particles": "particles/entity/rope.vpcf",
+          "PlaybackSpeed": 1
+        }
+      ]
+    },
+    {
+      "Id": "3c3d1279-631d-4ba3-a607-fd4f8eec7792",
+      "Name": "Rope (1)",
+      "Position": "1287.64,404.0763,-1483.374",
+      "Rotation": "-0.0000003038324,-0.0000002451021,-0.7282079,0.6853559",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LegacyParticleSystem",
+          "ControlPoints": [
+            {
+              "StringCP": "1",
+              "GameObjectValue": {
+                "_type": "gameobject",
+                "go": "c6e89877-6972-41f6-984b-ea6625523737"
+              }
+            }
+          ],
+          "Looped": false,
+          "Particles": "particles/entity/rope.vpcf",
+          "PlaybackSpeed": 1
+        }
+      ]
+    },
+    {
+      "Id": "ba3e2a6f-540e-4661-b469-e4f963df7b9b",
+      "Name": "Rope (2)",
+      "Position": "1284.278,348.7042,-1483.374",
+      "Rotation": "-0.0000003038324,-0.0000002451021,-0.7282079,0.6853559",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LegacyParticleSystem",
+          "ControlPoints": [
+            {
+              "StringCP": "1",
+              "GameObjectValue": {
+                "_type": "gameobject",
+                "go": "d3ac4507-127c-41ed-872f-9a4fad9426f5"
+              }
+            }
+          ],
+          "Looped": false,
+          "Particles": "particles/entity/rope.vpcf",
+          "PlaybackSpeed": 1
+        }
+      ]
+    },
+    {
+      "Id": "26e5c59d-5fa4-4812-8bac-74c64a2308ac",
+      "Name": "metal_beam_b_128",
+      "Position": "1290.593,404.0202,-1483.374",
+      "Rotation": "-0.0000001459778,-0.0000003706397,0.707107,0.7071065",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/props/beam_railing_a/metal_beam_b_128.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/props/beam_railing_a/metal_beam_b_128.vmdl",
+          "Static": true,
+          "Surface": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "e940ef93-abfc-4b83-b8d6-8de72bf08dab",
+          "Name": "Object",
+          "Position": "48.72876,0.0003255488,-0.0005037631",
+          "Rotation": "-0.0000005580113,0.0000004018511,-0.9995406,-0.0303013",
+          "Enabled": true
+        },
+        {
+          "Id": "60cd313e-51a8-4a88-b53e-b90b8d221bf2",
+          "Name": "Object (1)",
+          "Position": "0,2.944831,-0.00001984055",
+          "Rotation": "-0.0000004853145,0.0000008134052,-0.6853554,-0.7282085",
+          "Enabled": true
+        },
+        {
+          "Id": "28705238-bd6f-46ff-a3f3-315ff0fd0adf",
+          "Name": "Object (2)",
+          "Position": "-55.43963,3.36454,-0.00008267321",
+          "Rotation": "-0.0000001283267,0.0000007484772,0.03030208,-0.9995406",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "Id": "b813d3c9-16a6-41b2-b234-e5e6f780e278",
+      "Name": "Object",
+      "Position": "938.3911,372.304,-1500.01",
+      "Enabled": true,
+      "Children": [
+        {
+          "Id": "13cb80b0-fb57-423a-8e76-68db48fbd865",
+          "Name": "Cube",
+          "Position": "146.1272,-44.90042,-95.419",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+              "Static": false,
+              "Surface": null
+            }
+          ]
+        },
+        {
+          "Id": "70acea5c-b91a-4e7a-a4d0-b29f4dec0c7e",
+          "Name": "Cube (1)",
+          "Position": "96.04146,-44.90021,-95.41898",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "SliderJoint",
+              "Body": {
+                "_type": "gameobject",
+                "go": "13cb80b0-fb57-423a-8e76-68db48fbd865"
+              },
+              "BreakForce": 0,
+              "BreakTorque": 0,
+              "EnableCollision": false,
+              "Friction": 0,
+              "MaxLength": 100,
+              "MinLength": 0,
+              "OnBreak": null
+            },
+            {
+              "__type": "Rigidbody",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+              "Static": false,
+              "Surface": null
+            }
+          ]
+        },
+        {
+          "Id": "ea22cea3-c177-4206-bc46-8ec4cb09a6a4",
+          "Name": "Rope (3)",
+          "Position": "352.2019,80.44495,-95.419",
+          "Rotation": "-0.0000003038324,-0.0000002451021,-0.7282079,0.6853559",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LegacyParticleSystem",
+              "ControlPoints": [
+                {
+                  "StringCP": "0",
+                  "GameObjectValue": {
+                    "_type": "gameobject",
+                    "go": "70acea5c-b91a-4e7a-a4d0-b29f4dec0c7e"
+                  }
+                },
+                {
+                  "StringCP": "1",
+                  "GameObjectValue": {
+                    "_type": "gameobject",
+                    "go": "13cb80b0-fb57-423a-8e76-68db48fbd865"
+                  }
+                }
+              ],
+              "Looped": false,
+              "Particles": "particles/entity/rope.vpcf",
+              "PlaybackSpeed": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "9edcbe81-af9b-41da-a869-aa374a507952",
+      "Name": "Door1",
+      "Position": "1125.045,636.3431,-1636.767",
+      "Enabled": true,
+      "Children": [
+        {
+          "Id": "17e7b985-6800-4dc3-ad27-819c8a15b45d",
+          "Name": "door_2_window_a",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/doors/door_2_window_a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Rigidbody",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/doors/door_2_window_a.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "HingeJoint",
+              "Body": {
+                "_type": "gameobject",
+                "go": "3892656c-65a1-4fa2-9e9a-393d70b91af9"
+              },
+              "BreakForce": 0,
+              "BreakTorque": 0,
+              "EnableCollision": false,
+              "Friction": 0,
+              "MaxAngle": 100,
+              "MinAngle": -100,
+              "OnBreak": null
+            }
+          ]
+        },
+        {
+          "Id": "82167dce-6722-4740-9df7-b4ad805bdb2e",
+          "Name": "frame",
+          "Position": "0,27.259,-2.14622",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/wooden_door_frame/wooden_door_frame_single_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "4650390c-96f7-420c-8504-0d4e930dbf10",
+          "Name": "frame (1)",
+          "Position": "0,27.259,-2.146",
+          "Rotation": "0,0,1,-0.0000006397578",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/wooden_door_frame/wooden_door_frame_single_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "ea1b54f6-780b-48fd-8ce9-9de3afc290de",
+      "Name": "Door1 (1)",
+      "Position": "1125.045,542.1202,-1636.767",
+      "Enabled": true,
+      "Children": [
+        {
+          "Id": "ff331321-4d2a-4f89-a456-d91fdfa1f41c",
+          "Name": "door_2_window_a",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/doors/door_2_window_a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Rigidbody",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/doors/door_2_window_a.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "HingeJoint",
+              "Body": {
+                "_type": "gameobject",
+                "go": "3892656c-65a1-4fa2-9e9a-393d70b91af9"
+              },
+              "BreakForce": 0,
+              "BreakTorque": 0,
+              "EnableCollision": false,
+              "Friction": 0,
+              "MaxAngle": 100,
+              "MinAngle": -100,
+              "OnBreak": null
+            }
+          ]
+        },
+        {
+          "Id": "7ad77d43-5dd5-4468-9059-9a0fbad9b3cb",
+          "Name": "frame",
+          "Position": "0,27.259,-2.14622",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/wooden_door_frame/wooden_door_frame_single_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "16a4960c-b593-4ae3-8251-8cb4eac100c8",
+          "Name": "frame (1)",
+          "Position": "0,27.259,-2.146",
+          "Rotation": "0,0,1,-0.0000006397578",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/wooden_door_frame/wooden_door_frame_single_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "cbb6f832-a070-4529-acf8-a8c61e21038e",
+      "Name": "Door1 (2)",
+      "Position": "1125.045,450.0031,-1636.767",
+      "Enabled": true,
+      "Children": [
+        {
+          "Id": "f4f47a39-02bf-43ba-9c40-d642f6c2f4ab",
+          "Name": "door_2_window_a",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/doors/door_2_window_a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Rigidbody",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/doors/door_2_window_a.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "HingeJoint",
+              "Body": {
+                "_type": "gameobject",
+                "go": "3892656c-65a1-4fa2-9e9a-393d70b91af9"
+              },
+              "BreakForce": 0,
+              "BreakTorque": 0,
+              "EnableCollision": false,
+              "Friction": 0,
+              "MaxAngle": 100,
+              "MinAngle": -100,
+              "OnBreak": null
+            }
+          ]
+        },
+        {
+          "Id": "fe87b081-a10f-4d7e-ba20-54bab3a07f3c",
+          "Name": "frame",
+          "Position": "0,27.259,-2.14622",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/wooden_door_frame/wooden_door_frame_single_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "52ea54df-9105-49dc-8736-24ddf1fac93e",
+          "Name": "frame (1)",
+          "Position": "0,27.259,-2.146",
+          "Rotation": "0,0,1,-0.0000006397578",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/wooden_door_frame/wooden_door_frame_single_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "34e304b0-41c2-445d-978a-2d2a7709eaba",
+      "Name": "Camera",
+      "Position": "1136.118,484.6284,-1498.151",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "CameraComponent",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 90,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "Physics Joints",
+  "Description": "Tetsing various types of physics joints",
+  "LastSaved": "2024-02-10T19:52:54.1002117\u002B00:00",
+  "__references": [
+    "facepunch.metal_beam_b_128",
+    "facepunch.wooden_crate",
+    "facepunch.wooden_door_frame_single_01a",
+    "gkaf.door_2_window_a"
+  ]
+}
